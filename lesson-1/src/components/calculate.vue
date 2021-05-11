@@ -2,20 +2,6 @@
   <div class="hello">
     <h3>{{ msg }} <a href="https://gb.ru/lessons/134350" target="_blank">{{ lesson }} {{ num }}</a></h3>
     <h3>Калькулятор</h3>
-
-  <!-- не смог сделать "переключатель классов", как в обычном JS, что то вроде: -->
-  <!-- function changeActiveClass(event) {
-    document.querySelector('.active').classList.remove('active');
-    event.target.classList.add('active');
-  } -->
-   <!-- когда при нажатии кнопки, активируется определенный класс,
-   а при нажатии другой, он де-активируется и присваеватся на которую нажали
-   не сообразил, как это во Vue прописать. С одной кнопкой понятно, а с несколькими нет.
-   И с переключалкой кнопки on - off: цвет меняет, а названия не получается -->
-
-  <!-- switch на общую функцию calc написал, но как его правильно запустить
-  тоже пока не понял  -->
-
      <button
      class="btnOnOff"
     :class="{gray: isGray}"
@@ -25,54 +11,47 @@
      status.on = status.off"
      >{{ status.on || status.off}}</button>
 
-      <div v-if="show" class="calc">
+    <div v-if="show" class="calc">
         <input v-model.number="operand1"/>
         <input v-model.number="operand2"/>
       = <span>{{ result }}</span>
+<br>
+<br>
+      fib (<input v-model.number="operand1"/>)
+      : <span>{{ fib1  }}</span>
+      fib (<input v-model.number="operand2"/>)
+      : <span>{{ fib2 }}</span>
 
       <div class="btns">
         <button
+        :class="{'active': btnActiveState === '+'}"
+        v-for="op in operations"
+        :key="op"
+        @click="calculate(op), onClick('+')"
+        >{{ op }}</button>
+      </div>
+    </div>
+        <!-- <button
         :class="{green: isActive, btn: isGrayBtn}"
-        @click="sum(),
+        @click="calculate('+'),
         isActive = !isActive,
         btn = isGrayBtn"
         >+</button>
 
         <button
-         :class="{green: isActive, btn: isGrayBtn}"
-        @click="sub(),
-        isActive = !isActive,
-        btn = isGrayBtn"
-        >-</button>
-
-        <button
-        @click="div()"
-        >/</button>
-
-        <button
-        @click="mul"
-        >*</button>
-
-        <button
-        @click="exp"
-        >exp</button>
-
-        <button
-        @click="int"
-        >int /</button>
-      </div>
-    </div>
+        @click="calculate('/')"
+        >/</button> -->
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
 
 export default {
   name: 'calculate',
   props: {
     msg: String,
     num: Number,
-    // stutus: Bulean,
   },
   data: () => ({
     lesson: 'Lesson',
@@ -85,64 +64,61 @@ export default {
       off: 'off',
     },
     isActive: false,
+
+    btnActiveState: '',
     operand1: '',
     operand2: '',
     result: 0,
-    action: [
-      'sum',
-      'sub',
-      'div',
-      'mul',
-      'exp',
-      'int',
+    operations: [
+      '+', '-',
+      '/', '*',
+      'exp', 'int',
     ],
+    logs: {},
   }),
 
   methods: {
-    sum() {
-      this.result = this.operand1 + this.operand2;
+    calculate(op) {
+      const { operand1, operand2 } = this;
+      const calcOperation = {
+        '+': () => operand1 + operand2,
+        '-': () => operand1 - operand2,
+        '/': () => operand1 / operand2,
+        '*': () => operand1 * operand2,
+
+        // eslint-disable-next-line no-restricted-properties
+        exp: () => Math.pow(operand1, operand2),
+        int: () => Math.trunc(operand1 / operand2),
+      };
+      this.result = calcOperation[op]();
+
+      Vue.set(this.logs, Date.now(), `used op ${op}`);
+
+      // this.$set
+
+      // this.logs[Date.now()] = `used op ${op}`;
+      // this.logs = { ...this.logs };
+      // this.logs = Object.assign( {}, this.logs);
     },
-    sub() {
-      this.result = this.operand1 - this.operand2;
+    onClick(op) {
+      this.btnActiveState = op;
     },
-    div() {
-      this.result = this.operand1 / this.operand2;
-    },
-    mul() {
-      this.result = this.operand1 * this.operand2;
-    },
-    exp() {
-      // eslint-disable-next-line no-restricted-properties
-      this.result = Math.pow(this.operand1, this.operand2);
-    },
-    int() {
-      this.result = Math.trunc(this.operand1 / this.operand2);
+    fib(n) {
+      return n <= 1 ? n : this.fib(n - 1) + this.fib(n - 2);
     },
   },
   computed: {
-    calculation(operand1, operand2, action) {
-      switch (action) {
-        case '+':
-          return action.sum(operand1, operand2);
-        case '-':
-          return action.sub(operand1, operand2);
-        case '/':
-          return action.div(operand1, operand2);
-        case '*':
-          return action.mul(operand1, operand2);
-        case 'exp':
-          return action.exp(operand1, operand2);
-        case 'int':
-          return action.int(operand1, operand2);
-        default:
-          throw new Error(`Операция ${action} не предусмотрена`);
-      }
+    fib1() {
+      return this.fib(this.operand1);
+    },
+    fib2() {
+      return this.fib(this.operand2);
     },
   },
 };
 </script>
 
-<style scoped lang="scss">
+<style scope lang="scss">
 
 h3 {
   margin: 40px 0 0;
