@@ -1,44 +1,34 @@
 <template>
   <div class="hello">
-
     <h3>the simple calculator is updated</h3>
 
     <div class="calc">
-        <input v-bind="Number.num" v-model.number="operand1" ref="op1" />
-        <input v-bind="Number.num" v-model.number="operand2" ref="op2" />
+      <input v-bind="Number.num" v-model.number="operand1" ref="op1" />
+      <input v-bind="Number.num" v-model.number="operand2" ref="op2" />
       = <span>{{ result }} </span>
 
       <div class="btns">
         <button
-        :class="{'active': btnActiveState === '+'}"
-        v-for="op in operations"
-        :key="op"
-        @click="calculate(op), onClick('+')"
-        >{{ op }}</button>
+          :class="{ active: btnActiveState === '+' }"
+          v-for="op in operations"
+          :key="op"
+          @click="calculate(op), onClick('+')"
+        >
+          {{ op }}
+        </button>
       </div>
 
-      <input type="checkbox"
-      v-model="btnsNum"
-      >show on-screen keyboard
+      <input type="checkbox" v-model="btnsNum" />show on-screen keyboard
 
       <div v-if="btnsNum === status.on">
-         <button class="btnsNum"
-         v-for="(num, index) in Numbers"
-         :key="num.index"
-         v-on:remove="Numbers.splice(index, 1)"
-         > {{ num }} </button>
+        <button class="btnsNum" v-for="btn in 10" :key="btn" @click="inputNum(btn - 1)">
+          {{ btn - 1 }}
+        </button>
 
-         <button class="del" @click="$emit('remove')">←</button><br>
+        <button class="del" @click="eraseOne">←</button><br />
 
-         <!-- Запутался окончательно с радио-кнопками, то одно не работает, то другое,
-         всё вместе вообще никак не запускается. Всю логику понимаю, а как всё вместе
-         правильно прописать в увязке с инпутами, пока до конца не понял -->
-
-        <input type="radio" id="operand1" value="" :v-model="operand1">
-        <label for="operand1">op 1</label>
-
-        <input type="radio" id="operand2" value="" :v-model="operand2">
-        <label for="operand2">op 2</label>
+        <label><input type="radio" value="1" v-model="operch" />op 1</label>
+        <label><input type="radio" value="2" v-model="operch" />op 2</label>
       </div>
       <div v-else></div>
     </div>
@@ -52,9 +42,9 @@ export default {
   name: 'upCalculate',
   props: [],
   data: () => ({
-    Numbers:
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    Numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     num: '',
+    operch: '',
     selectedNum: '',
     btnsNum: true,
     status: {
@@ -72,11 +62,7 @@ export default {
     operand1: '',
     operand2: '',
     result: 0,
-    operations: [
-      '+', '-',
-      '/', '*',
-      'exp', 'int',
-    ],
+    operations: ['+', '-', '/', '*', 'exp', 'int'],
     logs: {},
   }),
 
@@ -97,6 +83,19 @@ export default {
 
       Vue.set(this.logs, Date.now(), `used op ${op}`);
     },
+    inputNum(i) {
+      const { operch } = this;
+      const input = operch === '1' ? 'operand1' : 'operand2';
+      // eslint-disable-next-line no-multi-assign
+      this[input] = +(this[input] += String(i));
+    },
+    eraseOne() {
+      const { operch } = this;
+      const input = operch === '1' ? 'operand1' : 'operand2';
+      // this[input] = Math.trunc(this[input] / 10);
+      this[input] = +String(this[input]).slice(0, -1);
+    },
+
     onClick(op) {
       this.btnActiveState = op;
     },
@@ -124,7 +123,6 @@ export default {
 </script>
 
 <style scope lang="scss">
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -137,7 +135,8 @@ ul {
   background: #42b983;
 }
 
-.btns, .btnsNum {
+.btns,
+.btnsNum {
   margin: 12px 3px;
 }
 
