@@ -3,8 +3,8 @@
     <h3>the simple calculator is updated</h3>
 
     <div class="calc">
-      <input v-bind="Number.num" v-model.number="operand1" ref="op1" />
-      <input v-bind="Number.num" v-model.number="operand2" ref="op2" />
+      <input v-model.number="operand1" ref="op1" />
+      <input v-model.number="operand2" ref="op2" />
       = <span>{{ result }} </span>
 
       <div class="btns">
@@ -85,9 +85,14 @@ export default {
     },
     inputNum(i) {
       const { operch } = this;
+      const { op1 } = this.$refs;
       const input = operch === '1' ? 'operand1' : 'operand2';
       // eslint-disable-next-line no-multi-assign
       this[input] = +(this[input] += String(i));
+      if (op1) {
+        op1.focus();
+        console.log(op1);
+      }
     },
     eraseOne() {
       const { operch } = this;
