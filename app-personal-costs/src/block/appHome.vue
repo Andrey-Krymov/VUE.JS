@@ -8,8 +8,8 @@
       <main>
         <button @click="show = !show">ADD NEW COST +</button>
         <div v-if="show" class="formTemplate">
-        <PaymentForm @add="onDataAdded" />
-        <PaymentList :items="paymentList" />
+          <PaymentForm @add="onDataAdded" />
+          <PaymentList :items="paymentList" />
         </div>
       </main>
     </div>
@@ -29,6 +29,106 @@ export default {
 
   data: () => ({
     paymentList: [
+      {
+        date: '20.05.2021',
+        category: 'Education',
+        price: 123,
+      },
+      {
+        date: '21.05.2021',
+        category: 'Education',
+        price: 456,
+      },
+      {
+        date: '22.05.2021',
+        category: 'Education',
+        price: 789,
+      },
+      {
+        date: '23.05.2021',
+        category: 'Education',
+        price: 0,
+      },
+      {
+        date: '20.05.2021',
+        category: 'Education',
+        price: 123,
+      },
+      {
+        date: '21.05.2021',
+        category: 'Education',
+        price: 456,
+      },
+      {
+        date: '22.05.2021',
+        category: 'Education',
+        price: 789,
+      },
+      {
+        date: '23.05.2021',
+        category: 'Education',
+        price: 0,
+      },
+      {
+        date: '20.05.2021',
+        category: 'Education',
+        price: 123,
+      },
+      {
+        date: '21.05.2021',
+        category: 'Education',
+        price: 456,
+      },
+      {
+        date: '22.05.2021',
+        category: 'Education',
+        price: 789,
+      },
+      {
+        date: '23.05.2021',
+        category: 'Education',
+        price: 0,
+      },
+      {
+        date: '20.05.2021',
+        category: 'Education',
+        price: 123,
+      },
+      {
+        date: '21.05.2021',
+        category: 'Education',
+        price: 456,
+      },
+      {
+        date: '22.05.2021',
+        category: 'Education',
+        price: 789,
+      },
+      {
+        date: '23.05.2021',
+        category: 'Education',
+        price: 0,
+      },
+      {
+        date: '20.05.2021',
+        category: 'Education',
+        price: 123,
+      },
+      {
+        date: '21.05.2021',
+        category: 'Education',
+        price: 456,
+      },
+      {
+        date: '22.05.2021',
+        category: 'Education',
+        price: 789,
+      },
+      {
+        date: '23.05.2021',
+        category: 'Education',
+        price: 0,
+      },
       {
         date: '20.05.2021',
         category: 'Education',
