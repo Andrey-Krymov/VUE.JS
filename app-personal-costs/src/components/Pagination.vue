@@ -47,6 +47,7 @@ export default {
     }
     &.active {
       background: #42b983;
+      color: #2c3e50;
     }
   }
   cursor: pointer;

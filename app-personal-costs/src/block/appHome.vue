@@ -6,7 +6,9 @@
         <h2>My personal costs</h2>
       </header>
       <main>
-        <button @click="show = !show">ADD NEW COST +</button>
+        <button
+        :class="[$style.btn]"
+        @click="show = !show">ADD NEW COST +</button>
         <div v-if="show" class="formTemplate">
           <PaymentForm @add="onDataAdded" />
           <PaymentList :items="paymentList" />
@@ -163,5 +165,8 @@ export default {
 <style lang="scss" module>
 .header {
   color: #2c3e50;
+}
+.btn {
+  background: #42b983;
 }
 </style>
