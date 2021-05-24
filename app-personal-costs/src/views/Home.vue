@@ -11,6 +11,9 @@
       <li>
         <router-link to="/lesson-3">Lesson 03</router-link>
       </li>
+      <li>
+        <router-link to="/lesson-4">Lesson 04</router-link>
+      </li>
     </ul>
   </div>
 </template>

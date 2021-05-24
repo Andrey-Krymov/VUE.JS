@@ -1,32 +1,32 @@
 <template>
   <div class="app">
     <div class="about">
-      <router-link to="/lesson-2">
+      <router-link to="/lesson-3">
         <button class="btnNav">◀</button>
       </router-link>
 
       <h3 class="headingLess">
-        <a href="https://gb.ru/lessons/134352/homework" target="_blank"
-          >Lesson 03</a
+        <a href="https://gb.ru/lessons/134353/homework" target="_blank"
+          >Lesson 04</a
         >
       </h3>
 
-      <router-link to="/lesson-4">
+      <router-link to="/">
         <button class="btnNav">▶</button>
       </router-link>
     </div>
 
-    <app-home />
+    <app-vuex />
   </div>
 </template>
 
 <script>
-import appHome from '@/block/appHome.vue';
+import appVuex from '@/block/appVuex.vue';
 
 export default {
-  name: 'lesson-3',
+  name: 'lesson-4',
   components: {
-    appHome,
+    appVuex,
   },
 };
 </script>

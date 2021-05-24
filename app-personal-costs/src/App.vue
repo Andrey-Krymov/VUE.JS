@@ -65,6 +65,18 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 0 10px;
+  a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #42b983;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .headingLess {
