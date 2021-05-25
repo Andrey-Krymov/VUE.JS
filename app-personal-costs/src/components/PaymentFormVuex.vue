@@ -37,10 +37,10 @@ export default {
 
     save() {
       const {
-        num, date, category, price,
+        id, date, category, price,
       } = this;
       this.getPaymentList.push({
-        num, date, category, price,
+        id, date, category, price,
       });
     },
   },

@@ -6,7 +6,7 @@
       :key="index"
     >
       <ul class="data_date">
-        <li>{{ item.num }}</li>
+        <li>{{ item.id }}</li>
       </ul>
       <ul class="data_date">
         <li>{{ item.date }}</li>

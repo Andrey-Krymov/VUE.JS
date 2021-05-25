@@ -22,9 +22,10 @@ export default new Vuex.Store({
       return new Promise((resolve) => {
         setTimeout(() => {
           const items = [];
-          for (let i = 0; i < 61; i += 1) {
+          // items = items < 10 ? `0${items}` : items;
+          for (let i = 1; i < 61; i += 1) {
             items.push({
-              num: i,
+              id: i,
               date: '20.05.2021',
               category: 'Education',
               price: 100,
