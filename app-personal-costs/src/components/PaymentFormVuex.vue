@@ -1,12 +1,10 @@
 <template>
-  <div class="formTemplate">
     <div class="input_form">
       <input placeholder="Payment Date" v-model="date" /><br />
       <input placeholder="Payment Description" v-model="category" /><br />
       <input placeholder="Payment Amount" v-model.number="price" /><br />
-      <button @click="save">ADD +</button>
+      <button :class="[$style.btn]" @click="save">ADD +</button>
     </div>
-  </div>
 </template>
 
 <script>
@@ -63,5 +61,13 @@ input {
   padding: 0 10px;
   margin: 10px 0;
   text-align: start;
+}
+.btn {
+  background: #42b983;
+   color: #2c3e50;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>

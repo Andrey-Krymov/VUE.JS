@@ -13,8 +13,8 @@
         </button>
         <div v-if="show" class="formTemplate">
           <PaymentFormVuex />
-          <PaymentListVuex />
         </div>
+        <PaymentListVuex />
       </main>
     </div>
   </div>
@@ -59,6 +59,11 @@ export default {
 }
 .btn {
   background: #42b983;
+  color: #2c3e50;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
 }
 span {
   font-size: 18px;

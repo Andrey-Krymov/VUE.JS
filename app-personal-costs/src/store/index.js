@@ -18,25 +18,33 @@ export default new Vuex.Store({
       .reduce((res, cur) => res + cur.price, 0),
   },
   actions: {
-    fetchData({ commit }) {
-      return new Promise((resolve) => {
+    async fetchData({ commit }) {
+      const res = await new Promise((resolve) => {
         setTimeout(() => {
           const items = [];
           // items = items < 10 ? `0${items}` : items;
-          for (let i = 1; i < 61; i += 1) {
+          for (let i = 1; i < 51; i += 1) {
             items.push({
               id: i,
-              date: '20.05.2021',
+              date: '20.05.2011',
               category: 'Education',
               price: 100,
             });
           }
           resolve(items);
-        }, 1000);
-      })
-        .then((res) => {
-          commit('SET_PAYMENTLIST_DATA', res);
-        });
+        }, 1);
+      });
+      commit('SET_PAYMENTLIST_DATA', res);
     },
   },
+
+  // actions: {
+  //   fetchDatat({ commit }) {
+  //     setTimeout(() => {
+  //       const items = [];
+  //       fetch('../src/db/items.json').then((response) => response.json());
+  //       commit('SET_PAYMENTLIST_DATA', items);
+  //     }, 1000);
+  //   },
+  // },
 });

@@ -36,7 +36,7 @@ export default {
   name: 'PaymentListVuex',
   data: () => ({
     page: 1,
-    n: 10,
+    n: 5,
   }),
   components: {
     PaginationVuex,
@@ -60,6 +60,9 @@ export default {
       return this.getPaymentList.slice(n * (page - 1), n * (page - 1) + n);
     },
   },
+  // mounted() {
+  //   this.page = +this.$route.params.page;
+  // },
 };
 </script>
 

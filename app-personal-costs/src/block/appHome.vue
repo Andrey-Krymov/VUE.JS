@@ -11,8 +11,8 @@
         @click="show = !show">ADD NEW COST +</button>
         <div v-if="show" class="formTemplate">
           <PaymentForm @add="onDataAdded" />
-          <PaymentList :items="paymentList" />
         </div>
+        <PaymentList :items="paymentList" />
       </main>
     </div>
   </div>
