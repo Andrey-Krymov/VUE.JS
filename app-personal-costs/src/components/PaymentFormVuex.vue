@@ -2,7 +2,12 @@
   <div class="formTemplate">
     <div class="input_form">
       <input placeholder="Payment Date" v-model="date" /><br />
-      <input placeholder="Payment Description" v-model="category" /><br />
+      <select v-model="category">
+        <option disabled value="">Payment Description</option>
+        <option v-for="option in options" :key="option">
+          {{ option }}
+        </option></select
+      ><br />
       <input placeholder="Payment Amount" v-model.number="price" /><br />
       <button @click="save">ADD +</button>
     </div>
@@ -20,6 +25,11 @@ export default {
     category: '',
     price: '',
     show: '',
+    options: [
+      'Food',
+      'Education',
+      'Transport',
+    ],
   }),
   props: {
     items: Array,
@@ -40,7 +50,10 @@ export default {
         id, date, category, price,
       } = this;
       this.getPaymentList.push({
-        id, date, category, price,
+        id,
+        date,
+        category,
+        price,
       });
     },
   },
