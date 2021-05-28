@@ -1,9 +1,9 @@
 <template>
   <div class="content">
-    <h2>page 404</h2>
     <div :class="[$style.dashboard]">
-      <router-link to="/lesson-5">Home</router-link>
+      <router-link to="/lesson-5">◀ Home</router-link>
     </div>
+    <h2>page 404</h2>
   </div>
 </template>
 
