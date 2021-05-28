@@ -2,8 +2,9 @@
   <div class="content">
     <header :class="[$style.header]">
       <h2>My personal costs</h2>
-    <div :class="[$style.dashboard]">
+    <div id="nav" :class="[$style.dashboard]">
           <router-link  to="/lesson-5">Home</router-link>
+          <router-link to="/dashboard">Dashboard</router-link>
           <router-link to="/about">About</router-link>
           <router-link to="/404">404</router-link>
         </div>
@@ -40,15 +41,16 @@ export default {
 .header {
   color: #2c3e50;
 }
+
 .dashboard {
   display: flex;
   justify-content: space-between;
+  gap: 1em;
   margin-bottom: 20px;
   a {
     font-weight: bold;
     text-decoration: none;
     color: #2c3e50;
-
     &.router-link-exact-active {
       color: #42b983;
     }

@@ -1,9 +1,11 @@
 <template>
    <div class="content">
      <header :class="[$style.header]">
-    <div :class="[$style.dashboard]">
+       <h2>My personal costs</h2>
+    <div id="nav" :class="[$style.dashboard]">
           <router-link to="/lesson-5">Home</router-link>
           <router-link to="/dashboard">Dashboard</router-link>
+          <router-link to="/about">About</router-link>
           <router-link to="/404">404</router-link>
         </div>
       <h2>Page About</h2>
