@@ -29,6 +29,7 @@ export default new Vuex.Store({
               date: '20.05.2011',
               category: 'Education',
               price: 100,
+              edit: '...',
             });
           }
           resolve(items);

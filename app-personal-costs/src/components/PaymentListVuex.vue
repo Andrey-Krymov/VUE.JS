@@ -17,6 +17,14 @@
       <ul class="data_price">
         <li>{{ item.price }}</li>
       </ul>
+      <select v-model="category">
+        <option disabled value="">{{ item.edit }}</option>
+        <option v-for="correction in corrections" :key="correction">
+          {{ correction }}
+        </option>
+      </select>
+
+        <CorrectionForm />
     </div>
 
     <PaginationVuex
@@ -37,16 +45,16 @@ export default {
   data: () => ({
     page: 1,
     n: 5,
+    category: '',
+    corrections: [
+      'Edit',
+      'Delit',
+    ],
   }),
   components: {
     PaginationVuex,
+    CorrectionForm: () => import('@/components/CorrectionForm.vue'),
   },
-  // props: {
-  //   items: {
-  //     type: Array,
-  //     default: () => [],
-  //   },
-  // },
   methods: {
     onPaginate(p) {
       this.page = p;
@@ -60,9 +68,6 @@ export default {
       return this.getPaymentList.slice(n * (page - 1), n * (page - 1) + n);
     },
   },
-  // mounted() {
-  //   this.page = +this.$route.params.page;
-  // },
 };
 </script>
 
@@ -70,9 +75,13 @@ export default {
 .data_list {
   display: flex;
 }
-
 ul {
   list-style-type: none;
   padding: 0px 50px 0px 0px;
+}
+select {
+  border: none;
+  outline: none;
+  padding: 0px;
 }
 </style>

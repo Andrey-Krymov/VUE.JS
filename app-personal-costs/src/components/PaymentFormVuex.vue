@@ -41,12 +41,6 @@ export default {
   },
 
   methods: {
-    // ...mapMutations(['SET_PAYMENTLIST_DATA']),
-
-    // ...mapMutations({
-    //   mySetMutation: 'SET_PAYMENTLIST_DATA',
-    // }),
-
     save() {
       const {
         id, date, category, price,
@@ -59,21 +53,6 @@ export default {
       });
     },
   },
-
-  // created() {
-  //   const newLocal = (this.date = Date.now());
-  //   this.intervalId = setInterval(() => newLocal, 1000);
-  // },
-  // mounted() {
-  //   this.SET_PAYMENTLIST_DATA(this.fetchData());
-  //   console.log(this.$store.state);
-  //   console.log(this.$store.getters.getPaymentList);
-  //   console.log(this.getPaymentListFullPrice);
-  // },
-
-  // mounted() {
-  //   this.$store.commit('setPaymentListData', this.fetchData());
-  // },
 };
 </script>
 

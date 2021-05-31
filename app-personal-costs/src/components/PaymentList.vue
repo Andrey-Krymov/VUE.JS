@@ -5,9 +5,6 @@
       v-for="(item, index) in items.slice(n * (page - 1), n * (page - 1) + n)"
       :key="index"
     >
-      <!-- <ul class="data_number">
-          <li>{{ items.length++ }}</li>
-        </ul> -->
       <ul class="data_date">
         <li>{{ item.date }}</li>
       </ul>
