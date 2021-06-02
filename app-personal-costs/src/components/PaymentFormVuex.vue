@@ -8,7 +8,7 @@
           {{ option }}
         </option></select
       ><br />
-      <input placeholder="Payment Amount" v-model.number="price" /><br />
+      <input placeholder="Payment Amount" v-model.number="value" /><br />
       <button @click="save">ADD +</button>
     </div>
   </div>
@@ -23,12 +23,15 @@ export default {
   data: () => ({
     date: '',
     category: '',
-    price: '',
+    value: '',
     show: '',
     options: [
       'Food',
+      'Sport',
       'Education',
       'Transport',
+      'Navigation',
+      'Entertaiment',
     ],
   }),
   props: {
@@ -47,13 +50,13 @@ export default {
 
     save() {
       const {
-        id, date, category, price,
+        id, date, category, value,
       } = this;
       this.getPaymentList.push({
         id,
         date,
         category,
-        price,
+        value,
       });
     },
   },
