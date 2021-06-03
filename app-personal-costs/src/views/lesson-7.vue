@@ -1,32 +1,31 @@
 <template>
   <div class="app">
     <div class="about">
-      <router-link to="/lesson-5">
+      <router-link to="/lesson-6">
         <button class="btnNav">◀</button>
       </router-link>
 
       <h3 class="headingLess">
-        <a href="https://gb.ru/lessons/134355/homework" target="_blank"
-          >Lesson 06</a
+        <a href="https://gb.ru/lessons/134356/homework" target="_blank"
+          >Lesson 07</a
         >
       </h3>
 
-      <router-link to="/lesson-7">
+      <router-link to="/">
         <button class="btnNav">▶</button>
       </router-link>
     </div>
-
-    <app-plugins />
+    <app-test />
   </div>
 </template>
 
 <script>
-import appPlugins from '@/block/appPlugins.vue';
+import appTest from '@/block/appTest.vue';
 
 export default {
-  name: 'lesson-6',
+  name: 'lesson-7',
   components: {
-    appPlugins,
+    appTest,
   },
 };
 </script>

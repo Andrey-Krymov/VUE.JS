@@ -4,9 +4,9 @@
     <header :class="[$style.header]">
       <h2>My personal costs</h2>
       <div id="nav" :class="[$style.dashboard]">
-        <router-link to="/lesson-6">Home</router-link>
+        <router-link to="/lesson-7">Home</router-link>
         <router-link to="/dashboard">Dashboard</router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/test">Test</router-link>
         <router-link to="/404">404</router-link>
       </div>
       <button :class="[$style.btn]" @click="openModal">Open Modal Window</button>

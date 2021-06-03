@@ -20,6 +20,9 @@
       <li>
         <router-link to="/lesson-6">Lesson 06</router-link>
       </li>
+      <li>
+        <router-link to="/lesson-7">Lesson 07</router-link>
+      </li>
     </ul>
   </div>
 </template>

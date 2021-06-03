@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div :class="[$style.dashboard]">
-      <router-link to="/lesson-6">◀ Home</router-link>
+      <router-link to="/lesson-7">◀ Home</router-link>
     </div>
     <h2>page 404</h2>
   </div>

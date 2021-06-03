@@ -40,6 +40,11 @@ const routes = [
     component: () => import('@/views/lesson-6.vue'),
   },
   {
+    path: '/lesson-7',
+    name: 'lesson-7',
+    component: () => import('@/views/lesson-7.vue'),
+  },
+  {
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('@/pages/PageDashboard.vue'),
@@ -48,6 +53,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('@/pages/PageAbout.vue'),
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: () => import('@/pages/PageTest.vue'),
   },
   {
     path: '*',
