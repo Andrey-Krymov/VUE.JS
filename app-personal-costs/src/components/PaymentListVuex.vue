@@ -5,31 +5,24 @@
       v-for="(item, index) in currentElements"
       :key="index"
     >
-      <ul class="data_date">
+      <ul :class="[$style.data_items]">
         <li>{{ item.id }}</li>
-      </ul>
-      <ul class="data_date">
         <li>{{ item.date }}</li>
-      </ul>
-      <ul class="data_category">
         <li>{{ item.category }}</li>
-      </ul>
-      <ul class="data_price">
-        <li>{{ item.price }}</li>
+        <li>{{ item.value }}</li>
       </ul>
     </div>
 
     <PaginationVuex
-      :length="getPaymentList.length"
+      :length="50"
       :n="n"
       :cur="page"
-      @paginate="onPaginate"
-    />
+      @paginate="onPaginate" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import PaginationVuex from '@/components/PaginationVuex.vue';
 
 export default {
@@ -41,36 +34,33 @@ export default {
   components: {
     PaginationVuex,
   },
-  // props: {
-  //   items: {
-  //     type: Array,
-  //     default: () => [],
-  //   },
-  // },
   methods: {
+    ...mapActions({
+      fetchListData: 'fetchData',
+    }),
     onPaginate(p) {
       this.page = p;
+      this.fetchListData(p);
     },
   },
   computed: {
     ...mapGetters(['getPaymentList']),
-
     currentElements() {
       const { n, page } = this;
       return this.getPaymentList.slice(n * (page - 1), n * (page - 1) + n);
     },
   },
-  // mounted() {
-  //   this.page = +this.$route.params.page;
-  // },
+  mounted() {
+    this.fetchListData(this.page);
+  },
 };
 </script>
 
 <style lang="scss" module>
-.data_list {
+.data_list, .data_items {
   display: flex;
+  gap: 15px;
 }
-
 ul {
   list-style-type: none;
   padding: 0px 50px 0px 0px;

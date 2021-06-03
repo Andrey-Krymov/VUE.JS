@@ -25,6 +25,9 @@
         <button :class="[$style.btn]" @click="show = !show">
           ADD NEW COST +
         </button>
+        <div v-if="show">
+          <PaymentFormVuex />
+        </div>
         <!-- <div v-if="show" class="formTemplate">
           <PageDashboard v-if="page === 'dashboard'" />
           <PageAbout v-if="page === 'about'" />
@@ -39,9 +42,13 @@
 // import PageDashboard from '@/pages/PageDashboard.vue';
 // import PageAbout from '@/pages/PageAbout.vue';
 // import Page404 from '@/pages/Page404.vue';
+import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
 
 export default {
   name: 'appRouter',
+  components: {
+    PaymentFormVuex,
+  },
   // components: {
   //   PageDashboard,
   //   PageAbout,
@@ -50,7 +57,7 @@ export default {
 
   data() {
     return {
-      // show: '',
+      show: '',
       // page: 'dashboard',
     };
   },

@@ -11,7 +11,7 @@
         <button :class="[$style.btn]" @click="show = !show">
           ADD NEW COST +
         </button>
-        <div v-if="show" class="formTemplate">
+        <div v-if="show">
           <PaymentFormVuex />
         </div>
         <PaymentListVuex />
@@ -24,31 +24,16 @@
 import PaymentListVuex from '@/components/PaymentListVuex.vue';
 import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
 
-import { mapActions } from 'vuex';
-
 export default {
   name: 'appVuex',
   components: {
     PaymentFormVuex,
     PaymentListVuex,
   },
-
   data() {
     return {
       show: '',
     };
-  },
-
-  methods: {
-    ...mapActions(['fetchData']),
-
-    // onDataAdded(data) {
-    //   this.paymentList.push(data);
-    // },
-  },
-
-  mounted() {
-    this.fetchData();
   },
 };
 </script>
@@ -59,11 +44,6 @@ export default {
 }
 .btn {
   background: #42b983;
-  color: #2c3e50;
-  border: none;
-  padding: 7px;
-  font-weight: bold;
-  cursor: pointer;
 }
 span {
   font-size: 18px;
