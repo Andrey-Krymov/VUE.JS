@@ -5,51 +5,49 @@
       <option disabled value="">Payment Description</option>
       <option v-for="option in options" :key="option">{{ option }}</option>
     </select><br />
-    <input placeholder="Payment Amount" v-model.number="price" /><br />
-    <button :class="[$style.btn]" @click="save">{{ localeDate }}</button>
+    <input placeholder="Payment Amount" v-model.number="value" /><br />
+    <button :class="[$style.btn]" @click="save">ADD +</button>
   </div>
 </template>
 
 <script>
-// import { mapMutations, mapGetters } from 'vuex';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'PaymentFormVuex',
-
   data: () => ({
-    date: null,
+    date: '',
     category: '',
-    price: '',
+    value: '',
     show: '',
     options: [
-      'Education',
       'Food',
+      'Sport',
+      'Education',
       'Transport',
+      'Navigation',
+      'Entertaiment',
     ],
-    completedForm: {},
   }),
   props: {
     items: Array,
   },
   computed: {
     ...mapGetters(['getPaymentList']),
-
     localeDate() {
       return new Date(this.date).toLocaleDateString();
     },
   },
-
   methods: {
     save() {
       const {
-        id, date, category, price,
+        id, date, category, value,
       } = this;
       this.getPaymentList.push({
         id,
         date,
         category,
-        price,
+        value,
       });
     },
   },

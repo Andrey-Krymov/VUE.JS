@@ -11,87 +11,33 @@
           <router-link to="/dashboard">Dashboard</router-link>
           <router-link to="/about">About</router-link>
           <router-link to="/404">404</router-link>
-
-          <!-- <a href="#dashboard">Dashboard</a>
-          <a href="#about">About</a>
-          <a href="#404">404</a> -->
-
-          <!-- <a href="/dashboard">Dashboard</a>
-          <a href="/about">About</a>
-          <a href="/404">404</a> -->
         </div>
       </header>
       <main>
         <button :class="[$style.btn]" @click="show = !show">
           ADD NEW COST +
         </button>
-        <!-- <div v-if="show" class="formTemplate">
-          <PageDashboard v-if="page === 'dashboard'" />
-          <PageAbout v-if="page === 'about'" />
-          <Page404 v-if="page === '404'" />
-        </div> -->
+        <div v-if="show">
+          <PaymentFormVuex />
+        </div>
       </main>
     </div>
   </div>
 </template>
 
 <script>
-// import PageDashboard from '@/pages/PageDashboard.vue';
-// import PageAbout from '@/pages/PageAbout.vue';
-// import Page404 from '@/pages/Page404.vue';
+import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
 
 export default {
   name: 'appRouter',
-  // components: {
-  //   PageDashboard,
-  //   PageAbout,
-  //   Page404,
-  // },
-
+  components: {
+    PaymentFormVuex,
+  },
   data() {
     return {
-      // show: '',
-      // page: 'dashboard',
+      show: '',
     };
   },
-
-  // mounted() {
-  //   this.$router.push({ name: 'Not Found' });
-  // },
-
-  // HASHED URL
-  // methods: {
-  //   setPage() {
-  //     this.page = location.hash.slice(1);
-  //   },
-  // },
-
-  // mounted() {
-  //   this.setPage();
-  //   window.addEventListener('hashchange', () => {
-  //     this.setPage();
-  //   });
-  // },
-
-  // ORDINARY URL
-  // methods: {
-  //   setPage() {
-  //     this.page = location.pathname.slice(1);
-  //   },
-  // },
-
-  // mounted() {
-  //   this.setPage();
-  //   const links = document.querySelectorAll('a');
-  //   links.forEach((link) => {
-  //     link.addEventListener('click', (event) => {
-  //       event.preventDefault();
-  //       history.pushState({}, '', link.href);
-  //       this.setPage();
-  //     });
-  //   });
-  //   window.addEventListener('popstate', this.setPage);
-  // },
 };
 </script>
 
