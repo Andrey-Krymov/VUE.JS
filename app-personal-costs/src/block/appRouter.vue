@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
+import PaymentFormVuex from '../components/PaymentFormVuex.vue';
 
 export default {
   name: 'appRouter',

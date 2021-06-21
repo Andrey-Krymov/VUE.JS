@@ -1,13 +1,15 @@
 <template>
   <div>
     <!-- <payment-form-vuex v-if="shown === 'PaymentFormVuex'" /><br> -->
-           <payment-form-vuex v-if="name === 'PaymentFormVuex'" /><br>
-            <button :class="[$style.btn]" @click="closeModal">Close Modal Window</button>
+   <payment-form-vuex v-if="name === 'PaymentFormVuex'"
+   :id="settings && settings.id" /><br>
+   <button :class="[$style.btn]" @click="closeModal">Close Modal Window</button>
   </div>
 </template>
 
 <script>
-import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
+import { mapGetters } from 'vuex';
+import PaymentFormVuex from './PaymentFormVuex.vue';
 
 export default {
   name: 'PaymentFormModal',
@@ -15,27 +17,36 @@ export default {
   props: {
     // modal: String,
     name: String,
+    settings: Object,
+    items: Array,
   },
   data() {
     return {
-      // shown: '',
+      date: '',
+      category: '',
+      value: '',
     };
   },
   methods: {
     closeModal() {
       this.$modal.close();
     },
-    // onShow({ name }) {
-    //   this.shown = name;
-    // },
-    // closeModal() {
-    //   this.shown = '';
-    // },
   },
-  // mounted() {
-  //   this.$modal.EventBus.$on('show', this.onShow);
-  //   this.$modal.EventBus.$on('close', this.onCloseModal);
-  // },
+  computed: {
+    ...mapGetters([
+      'getPaymentList',
+    ]),
+  },
+  mounted() {
+    if (this.id) {
+      const item = this.getPaymentList.find((p) => p.id === this.id);
+      if (item) {
+        this.date = item.date;
+        this.category = item.category;
+        this.value = item.value;
+      }
+    }
+  },
 };
 </script>
 

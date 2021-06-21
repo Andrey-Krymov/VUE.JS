@@ -10,6 +10,9 @@
         <li>{{ item.date }}</li>
         <li>{{ item.category }}</li>
         <li>{{ item.value }}</li>
+        <li :class="[$style.correct]"
+        @click="showContext($event, item.id)"
+        > ... </li>
       </ul>
     </div>
 
@@ -22,8 +25,8 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import PaginationVuex from '@/components/PaginationVuex.vue';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
+import PaginationVuex from './PaginationVuex.vue';
 
 export default {
   name: 'PaymentListVuex',
@@ -38,9 +41,20 @@ export default {
     ...mapActions({
       fetchListData: 'fetchData',
     }),
+    ...mapMutations([
+      'DELITE_ITEMS',
+    ]),
     onPaginate(p) {
       this.page = p;
       this.fetchListData(p);
+    },
+    showContext(event, id) {
+      const items = [
+        { text: 'Delite', action: () => { this.DELITE_ITEMS(id); } },
+        { text: 'Edit', action: () => { this.$modal.show('PaymentFormVuex', { id }); } },
+      ];
+      this.$correction.show({ event, items });
+      console.log(id);
     },
   },
   computed: {
@@ -64,5 +78,8 @@ export default {
 ul {
   list-style-type: none;
   padding: 0px 50px 0px 0px;
+}
+.correct {
+  cursor: pointer;
 }
 </style>

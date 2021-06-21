@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PaymentFormModal from '@/components/PaymentFormModal.vue';
+import PaymentFormModal from '../components/PaymentFormModal.vue';
 
 export default {
   name: 'modalWindow',

@@ -186,11 +186,32 @@ export default new Vuex.Store({
       state.paymentList = payload;
     },
     ADD_PAYMENTLIST_DATA(state, payload) {
-      const newUniqIDs = payload.filter((obj) => state.paymentListIDs.indexOf(obj.id) < 0);
+      const newUniqIDs = payload.filter((obj) => state.paymentListIDs.indexOf((obj.id) < 0));
       const uniqIDs = newUniqIDs.map((obj) => obj.id);
 
-      state.paymentList.push(...newUniqIDs);
       state.paymentListIDs.push(...uniqIDs);
+      state.paymentList.push(...newUniqIDs);
+
+      // const newIDs = payload.map(obj => obj.id);
+      // const uniqIDs = newIDs.filter(id => state.paymentListIDs.indexOf((id) < 0));
+    },
+    DELITE_ITEMS(state, payload) {
+      state.paymentListIDs = state.paymentListIDs.filter((id) => id !== payload);
+      state.paymentList = state.paymentList.filter((item) => item.id !== payload);
+    },
+    ADD_NEW_PAYMENT(state, payload) {
+      const id = state.paymentListIDs.length > 50 ? state.paymentListIDs.length : 51;
+      state.paymentListIDs.push(id);
+      // eslint-disable-next-line no-param-reassign
+      payload.id = id;
+      state.paymentList.push(payload);
+    },
+    UPDATE_PAYMENT(state, payload) {
+      // eslint-disable-next-line no-shadow
+      const item = state.paymentList.find((item) => item.id === payload.id);
+      if (item) {
+        Object.assign(item, payload);
+      }
     },
   },
   getters: {

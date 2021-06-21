@@ -9,7 +9,7 @@
         <div id="nav" :class="[$style.dashboard]">
           <router-link to="/lesson-6">Home</router-link>
           <router-link to="/dashboard">Dashboard</router-link>
-          <router-link to="/about">About</router-link>
+          <router-link to="/about">Chart</router-link>
           <router-link to="/404">404</router-link>
         </div>
       </header>
@@ -21,7 +21,10 @@
           <div :class="[$style.overlay]">
           <div :class="[$style.contentForm]">
         <transition name="fade">
-         <PaymentFormModal v-if="modalShown" :name="modalShown" />
+         <PaymentFormModal v-if="modalShown"
+         :id="settings && settings.id"
+         :name="modalShown"
+         :settings="modalSettings" />
         </transition>
           </div>
           </div>
@@ -36,13 +39,16 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'appPlugins',
-
   components: {
-    PaymentFormModal: () => import('@/components/PaymentFormModal.vue'),
+    PaymentFormModal: () => import('../components/PaymentFormModal.vue'),
+  },
+  props: {
+    settings: Object,
   },
   data() {
     return {
       modalShown: false,
+      modalSettings: {},
     };
   },
 
@@ -56,21 +62,16 @@ export default {
       this.$modal.close();
     },
 
-    onShown({ name }) {
+    onShown({ name, settings }) {
       this.modalShown = name;
+      this.modalSettings = settings;
     },
     onClose() {
       this.modalShown = '';
     },
   },
-  // mounted() {
-  //   console.log(this.$modal);
-  //   this.$modal.show();
-  //   this.$modal.close();
-  // },
   mounted() {
     this.fetchData();
-    console.log(this.$correction);
 
     this.$modal.EventBus.$on('show', this.onShown);
     this.$modal.EventBus.$on('close', this.onClose);
@@ -104,7 +105,7 @@ export default {
   position: relative;
   z-index: 0;
   margin-left: -70px;
-  top: 0;
+  top: -44px;
   bottom: 0;
   left: 0;
   right: 0;

@@ -5,19 +5,65 @@
     <div id="nav" :class="[$style.dashboard]">
           <router-link to="/lesson-6">Home</router-link>
           <router-link to="/dashboard">Dashboard</router-link>
-          <router-link to="/about">About</router-link>
+          <router-link to="/about">Chart</router-link>
           <router-link to="/404">404</router-link>
         </div>
-      <h2>Page About</h2>
       </header>
+      <!-- <div class="chart">
+        <canvas ref="canvas"></canvas>
+      </div> -->
+      <bar-chart :chart-data="chartData" :options="options"/>
+      <PaymentListVuex v-if="show" />
    </div>
 
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+import PaymentListVuex from '../components/PaymentListVuex.vue';
+import BarChart from '../components/BarChart.vue';
 
 export default {
-  name: 'pageAbout',
+  components: { PaymentListVuex, BarChart },
+  name: 'Chart',
+  data: () => ({
+    page: 1,
+    n: 5,
+    show: false,
+    chartData: {
+      labels: ['Chart'],
+      datasets: [
+        {
+          label: 'Data One',
+          data: [40, 20, 12, 39, 10, 40, 39, 80],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+    methods: {
+      ...mapActions({
+        fetchListData: 'fetchData',
+      }),
+      onPaginate(p) {
+        this.page = p;
+        this.fetchListData(p);
+      },
+      setups() {},
+    },
+    computed: {
+      ...mapGetters(['getPaymentList']),
+      currentElements() {
+        const { n, page } = this;
+        return this.getPaymentList.slice(n * (page - 1), n * (page - 1) + n);
+      },
+    },
+    mounted() {
+      this.fetchListData(this.page);
+    },
+  }),
 };
 </script>
 
@@ -53,5 +99,13 @@ export default {
 span {
   font-size: 18px;
   color: #42b983;
+}
+.data_list, .data_items {
+  display: flex;
+  gap: 15px;
+}
+ul {
+  list-style-type: none;
+  padding: 0px 50px 0px 0px;
 }
 </style>

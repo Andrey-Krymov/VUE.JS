@@ -21,10 +21,9 @@
 </template>
 
 <script>
-import PaymentListVuex from '@/components/PaymentListVuex.vue';
-import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
-
 import { mapActions } from 'vuex';
+import PaymentListVuex from '../components/PaymentListVuex.vue';
+import PaymentFormVuex from '../components/PaymentFormVuex.vue';
 
 export default {
   name: 'appVuex',

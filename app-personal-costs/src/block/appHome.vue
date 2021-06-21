@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import PaymentList from '@/components/PaymentList.vue';
-import PaymentForm from '@/components/PaymentForm.vue';
+import PaymentList from '../components/PaymentList.vue';
+import PaymentForm from '../components/PaymentForm.vue';
 
 export default {
   name: 'appHome',

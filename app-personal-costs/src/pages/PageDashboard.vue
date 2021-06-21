@@ -6,31 +6,39 @@
       <div id="nav" :class="[$style.dashboard]">
         <router-link to="/lesson-6">Home</router-link>
         <router-link to="/dashboard">Dashboard</router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/about">Chart</router-link>
         <router-link to="/404">404</router-link>
       </div>
       <button :class="[$style.btn]" @click="openModal">Open Modal Window</button>
       <button :class="[$style.btnCross]" @click="closeModal">×</button>
     </header>
-      <PaymentFormModal v-if="modalShown" :name="modalShown" modal='PaymentFormVuex' />
-      <PaymentListVuex />
+      <PaymentFormModal v-if="modalShown"
+      :name="modalShown" modal='PaymentFormVuex'
+      :settings="modalSettings" />
+      <transition name="fade">
+      <PaymentListVuex v-show="shown = !modalShown" />
+      </transition>
+      <correction-menu />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-// import PaymentFormModal from '@/components/PaymentFormModal.vue';
-import PaymentListVuex from '@/components/PaymentListVuex.vue';
+import PaymentListVuex from '../components/PaymentListVuex.vue';
+import CorrectionMenu from '../components/CorrectionMenu.vue';
 
 export default {
   name: 'PageDashboard',
   components: {
-    PaymentFormModal: () => import('@/components/PaymentFormModal.vue'),
+    PaymentFormModal: () => import('../components/PaymentFormModal.vue'),
     PaymentListVuex,
+    CorrectionMenu,
   },
   data() {
     return {
       modalShown: false,
+      shown: true,
+      modalSettings: {},
     };
   },
 
@@ -44,8 +52,9 @@ export default {
       this.$modal.close();
     },
 
-    onShown({ name }) {
+    onShown({ name, settings }) {
       this.modalShown = name;
+      this.modalSettings = settings;
     },
     onClose() {
       this.modalShown = '';
@@ -117,5 +126,13 @@ span {
 // :global(.fade-enter), :global(.fade-leave-to) {
 //   opacity: 0;
 // }
+</style>
 
+<style>
+.fade-enter-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>
