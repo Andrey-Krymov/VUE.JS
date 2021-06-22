@@ -7,32 +7,32 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/Home.vue'),
+    component: () => import('../views/Home.vue'),
   },
   {
     path: '/lesson-1',
     name: 'lesson-1',
-    component: () => import('@/views/lesson-1.vue'),
+    component: () => import('../views/lesson-1.vue'),
   },
   {
     path: '/lesson-2',
     name: 'lesson-2',
-    component: () => import('@/views/lesson-2.vue'),
+    component: () => import('../views/lesson-2.vue'),
   },
   {
     path: '/lesson-3',
     name: 'lesson-3',
-    component: () => import('@/views/lesson-3.vue'),
+    component: () => import('../views/lesson-3.vue'),
   },
   {
     path: '/lesson-4',
     name: 'lesson-4',
-    component: () => import('@/views/lesson-4.vue'),
+    component: () => import('../views/lesson-4.vue'),
   },
   {
     path: '/lesson-5',
     name: 'lesson-5',
-    component: () => import('@/views/lesson-5.vue'),
+    component: () => import('../views/lesson-5.vue'),
   },
   // {
   //   path: '/dashboard/:page',
@@ -42,12 +42,12 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('@/pages/PageDashboard.vue'),
+    component: () => import('../pages/PageDashboard.vue'),
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('@/pages/PageAbout.vue'),
+    component: () => import('../pages/PageAbout.vue'),
   },
   // {
   //   path: '/login',
@@ -55,9 +55,27 @@ const routes = [
   //   component: () => import('@/pages/Login.vue'),
   // },
   {
+    path: '/food',
+    name: 'food',
+    value: '200',
+    component: () => import('../add/payment/Food.vue'),
+  },
+  {
+    path: '/transport',
+    name: 'transport',
+    value: '50',
+    component: () => import('../add/payment/Transport.vue'),
+  },
+  {
+    path: '/entertainment',
+    name: 'entertainment',
+    value: '2000',
+    component: () => import('../add/payment/Entertainment.vue'),
+  },
+  {
     path: '*',
     name: 'Not Found',
-    component: () => import('@/pages/Page404.vue'),
+    component: () => import('../pages/Page404.vue'),
   },
 ];
 

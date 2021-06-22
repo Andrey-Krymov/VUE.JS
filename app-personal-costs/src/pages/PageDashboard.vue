@@ -5,6 +5,9 @@
     <div id="nav" :class="[$style.dashboard]">
           <router-link  to="/lesson-5">Home</router-link>
           <router-link to="/dashboard">Dashboard</router-link>
+          <router-link to="/food">Food</router-link>
+          <router-link to="/transport">Transport</router-link>
+          <router-link to="/entertainment">Entertainment</router-link>
           <router-link to="/about">About</router-link>
           <router-link to="/404">404</router-link>
         </div>
@@ -17,7 +20,9 @@
 <script>
 import { mapActions } from 'vuex';
 
+// eslint-disable-next-line import/no-unresolved
 import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
+// eslint-disable-next-line import/no-unresolved
 import PaymentListVuex from '@/components/PaymentListVuex.vue';
 
 export default {

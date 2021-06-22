@@ -9,6 +9,9 @@
         <div id="nav" :class="[$style.dashboard]">
           <router-link to="/lesson-5">Home</router-link>
           <router-link to="/dashboard">Dashboard</router-link>
+          <router-link to="/food">Food</router-link>
+          <router-link to="/transport">Transport</router-link>
+          <router-link to="/entertainment">Entertainment</router-link>
           <router-link to="/about">About</router-link>
           <router-link to="/404">404</router-link>
 
@@ -42,7 +45,7 @@
 // import PageDashboard from '@/pages/PageDashboard.vue';
 // import PageAbout from '@/pages/PageAbout.vue';
 // import Page404 from '@/pages/Page404.vue';
-import PaymentFormVuex from '@/components/PaymentFormVuex.vue';
+import PaymentFormVuex from '../components/PaymentFormVuex.vue';
 
 export default {
   name: 'appRouter',
