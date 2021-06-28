@@ -12,8 +12,8 @@
      >{{ status.on || status.off}}</button>
 
     <div v-if="show" class="calc">
-        <input v-model.number="operand1"/>
-        <input v-model.number="operand2"/>
+        <input v-model.number="operand1" name="operand1"/>
+        <input v-model.number="operand2" name="operand2"/>
       = <span>{{ result }}</span>
 
     <div class="error" v-if="error">{{ error }}</div>
@@ -22,16 +22,17 @@
     <div class="description" v-else-if="result === 0">the result is zero</div>
     <div class="description" v-else></div>
 <br>
-      fib (<input v-model.number="operand1"/>)
+      <!-- fib (<input v-model.number="operand1"/>)
       : <span>{{ fib1  }}</span>
       fib (<input v-model.number="operand2"/>)
-      : <span>{{ fib2 }}</span>
+      : <span>{{ fib2 }}</span> -->
 
       <div class="btns">
         <button
         :class="{'active': btnActiveState === '+'}"
         v-for="op in operations"
         :key="op"
+        :name="op"
         @click="calculate(op), onClick('+')"
         >{{ op }}</button>
       </div>
