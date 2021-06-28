@@ -3,8 +3,8 @@
     <h3>the simple calculator is updated</h3>
 
     <div class="calc">
-      <input v-model.number="operand1" ref="op1" />
-      <input v-model.number="operand2" ref="op2" />
+      <input v-model.number="operand1" ref="op1" name="operand1" />
+      <input v-model.number="operand2" ref="op2" name="operand2" />
       = <span>{{ result }} </span>
 
       <div class="btns">
@@ -12,6 +12,7 @@
           :class="{ active: btnActiveState === '+' }"
           v-for="op in operations"
           :key="op"
+          :name="op"
           @click="calculate(op), onClick('+')"
         >
           {{ op }}
@@ -21,14 +22,19 @@
       <input type="checkbox" v-model="btnsNum" />show on-screen keyboard
 
       <div v-if="btnsNum === status.on">
-        <button class="btnsNum" v-for="btn in 10" :key="btn" @click="inputNum(btn - 1)">
+
+        <button class="btnsNum"
+        v-for="btn in 10"
+        :key="btn"
+        :name="btnOnScreen"
+        @click="inputNum(btn - 1)">
           {{ btn - 1 }}
         </button>
 
-        <button class="del" @click="eraseOne">←</button><br />
+        <button :name="btnErase" class="del" @click="eraseOne">←</button><br />
 
-        <label><input type="radio" value="1" v-model="operch" />op 1</label>
-        <label><input type="radio" value="2" v-model="operch" />op 2</label>
+        <label><input type="radio" value="1" name="operch1" v-model="operch" />op 1</label>
+        <label><input type="radio" value="2" name="operch2" v-model="operch" />op 2</label>
       </div>
       <div v-else></div>
     </div>

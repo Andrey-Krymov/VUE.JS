@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1624825727523" clover="3.2.0">
-  <project timestamp="1624825727523" name="All files">
-    <metrics statements="172" coveredstatements="9" conditionals="345" coveredconditionals="2" methods="82" coveredmethods="4" elements="599" coveredelements="15" complexity="0" loc="172" ncloc="172" packages="7" files="13" classes="13"/>
+<coverage generated="1624889560728" clover="3.2.0">
+  <project timestamp="1624889560729" name="All files">
+    <metrics statements="172" coveredstatements="22" conditionals="345" coveredconditionals="2" methods="82" coveredmethods="13" elements="599" coveredelements="37" complexity="0" loc="172" ncloc="172" packages="7" files="13" classes="13"/>
     <package name="lesson-2">
       <metrics statements="2" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name=".eslintrc.js" path="C:\Users\USER\Desktop\IT\Frontend\VUE.JS\lesson-2\.eslintrc.js">
@@ -141,7 +141,7 @@
       </file>
     </package>
     <package name="lesson-2.src.components">
-      <metrics statements="51" coveredstatements="9" conditionals="16" coveredconditionals="2" methods="26" coveredmethods="4"/>
+      <metrics statements="51" coveredstatements="22" conditionals="16" coveredconditionals="2" methods="26" coveredmethods="13"/>
       <file name="calculate.vue" path="C:\Users\USER\Desktop\IT\Frontend\VUE.JS\lesson-2\src\components\calculate.vue">
         <metrics statements="19" coveredstatements="9" conditionals="6" coveredconditionals="2" methods="12" coveredmethods="4"/>
         <line num="54" count="1" type="stmt"/>
@@ -165,39 +165,39 @@
         <line num="124" count="0" type="stmt"/>
       </file>
       <file name="upCalculate.vue" path="C:\Users\USER\Desktop\IT\Frontend\VUE.JS\lesson-2\src\components\upCalculate.vue">
-        <metrics statements="32" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="14" coveredmethods="0"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="32" coveredstatements="13" conditionals="10" coveredconditionals="0" methods="14" coveredmethods="9"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="50" count="10" type="stmt"/>
+        <line num="77" count="6" type="stmt"/>
+        <line num="78" count="6" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="88" count="6" type="stmt"/>
+        <line num="90" count="6" type="stmt"/>
         <line num="93" count="0" type="stmt"/>
         <line num="94" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
-        <line num="99" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="101" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
-        <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="110" count="0" type="stmt"/>
-        <line num="111" count="0" type="stmt"/>
-        <line num="115" count="0" type="stmt"/>
-        <line num="116" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="95" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="98" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="105" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="111" count="6" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="115" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="116" count="0" type="stmt"/>
         <line num="117" count="0" type="stmt"/>
-        <line num="118" count="0" type="stmt"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="122" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="123" count="0" type="stmt"/>
         <line num="124" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
       </file>
     </package>
     <package name="lesson-2.src.router">
